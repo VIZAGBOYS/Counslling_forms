@@ -12,13 +12,6 @@ const MODES = [
   { key: 'naive',   label: 'Naive',   icon: Zap,      color: '#38bdf8', desc: 'Fast, direct retrieval' },
 ];
 
-const QUICK_PROMPTS = [
-  'What counselling forms are required?',
-  'How is profile completion calculated?',
-  'Explain the mentor grading system',
-  'What are the attendance requirements?',
-  'How do I update my academic details?',
-];
 
 /* ── Markdown-lite renderer ── */
 const renderText = (text) => {
@@ -287,22 +280,6 @@ const AIChatPage = () => {
           <div ref={messagesEndRef} />
         </div>
 
-        {/* ── Quick prompts ── */}
-        {messages.length <= 1 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
-            style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 12 }}
-          >
-            {QUICK_PROMPTS.map(p => (
-              <button key={p} onClick={() => sendMessage(p)} disabled={streaming}
-                style={{ padding: '7px 13px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.14)', background: 'rgba(148,163,184,0.08)', cursor: 'pointer', fontSize: 12, color: 'rgba(255,255,255,0.75)', transition: 'all 130ms ease', whiteSpace: 'nowrap' }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(129,140,248,0.15)'; e.currentTarget.style.borderColor = 'rgba(129,140,248,0.35)'; e.currentTarget.style.color = '#a5b4fc'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(148,163,184,0.08)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.14)'; e.currentTarget.style.color = 'rgba(255,255,255,0.75)'; }}
-              >
-                {p}
-              </button>
-            ))}
-          </motion.div>
-        )}
 
         {/* ── Error ── */}
         {error && (
